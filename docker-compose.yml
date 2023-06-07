@@ -1,0 +1,52 @@
+version: '3.9'
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    restart: always
+    env_file:
+      - ./apps/auth/.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '3002:3002'
+    networks:
+      - mynet
+  order:
+    build:
+      context: .
+      dockerfile: ./apps/order/Dockerfile
+      target: development
+    command: npm run start:dev order
+    restart: always
+    env_file:
+      - ./apps/order/.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '3001:3001'
+    networks:
+      - mynet
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/nest-gateway/Dockerfile
+      target: development
+    command: npm run start:dev
+    env_file:
+      - ./apps/nest-gateway/.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - auth
+      - order
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: bridge

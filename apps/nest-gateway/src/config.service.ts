@@ -7,6 +7,7 @@ export class ConfigService {
     return {
       options: {
         port: 3002,
+        host: 'auth',
       },
       transport: Transport.TCP,
     };
@@ -15,6 +16,7 @@ export class ConfigService {
     return {
       options: {
         port: 3001,
+        host: 'order',
       },
       transport: Transport.TCP,
     };

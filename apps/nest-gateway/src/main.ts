@@ -4,13 +4,13 @@ import { Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.connectMicroservice({
-    transport: Transport.TCP,
-    port: 3003,
-  });
+  // app.connectMicroservice({
+  //   transport: Transport.TCP,
+  //   port: 3003,
+  // });
 
-  app.startAllMicroservices();
-  app.init();
+  // app.startAllMicroservices();
+  // app.init();
   await app.listen(3000);
 }
 bootstrap();

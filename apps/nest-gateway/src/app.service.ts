@@ -31,7 +31,7 @@ export class AppService {
         payload,
       ),
     );
-
+    // console.log('sfdsfg');
     const orderData = await lastValueFrom(
       this.orderClient.send(
         {
@@ -40,7 +40,7 @@ export class AppService {
         payload2,
       ),
     );
-    return { authData, orderData };
+    return { authData };
   }
   // getHello(): any {
   //  return 'asdfadsf';
