@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ClientOptions, Transport } from '@nestjs/microservices';
 
 @Injectable()
-export class ConfigService {
+export class MicroserviceConfig {
   registerAuthService(): ClientOptions {
     return {
       options: {
