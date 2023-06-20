@@ -21,8 +21,6 @@ export class AppService {
   async getHello(): Promise<any> {
     const payload = [1, 2, 3, 5, 100, 434, 50];
     const payload2 = payload.map((a) => a * 2);
-
-    // const orderData = await this.orderClient.send<number>(pattern, payload2);
     const authData = await lastValueFrom(
       this.client.send<number>(
         {
@@ -31,7 +29,6 @@ export class AppService {
         payload,
       ),
     );
-    // console.log('sfdsfg');
     const orderData = await lastValueFrom(
       this.orderClient.send(
         {
@@ -40,9 +37,6 @@ export class AppService {
         payload2,
       ),
     );
-    return { authData };
+    return { authData, orderData };
   }
-  // getHello(): any {
-  //  return 'asdfadsf';
-  // }
 }
